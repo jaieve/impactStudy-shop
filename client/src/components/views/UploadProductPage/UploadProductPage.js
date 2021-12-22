@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {Typography, Button, Form, Input} from "antd";
+import FileUpload from "../../utils/FileUpload";
 //vscode에서는 rfc 이지만, webstorm에서는 rsf이다.
 // rcc 는 똑같이 rcc
 const {Title} = Typography;
@@ -37,10 +38,10 @@ function UploadProductPage() {
     return (
         <div style={{ maxWidth: '700px', margin: '2rem auto'}}>
             <div style={{ textAlign : 'center', marginBottom: '2rem'}}>
-                <h2> 여행 상품 업로드</h2>
+                <h2>Upload Travel Product</h2>
             </div>
             <Form>
-                {/*drop zoen */}
+                <FileUpload />
                 <br/>
                 <br/>
                 <label>이름</label>
