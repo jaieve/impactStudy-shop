@@ -8,7 +8,6 @@ import RegisterPage from "./views/RegisterPage/RegisterPage.js";
 import NavBar from "./views/NavBar/NavBar";
 import Footer from "./views/Footer/Footer"
 import UploadProductPage from "./views/UploadProductPage/UploadProductPage";
-import {Upload} from "antd";
 
 //null   Anyone Can go inside
 //true   only logged in user can go inside

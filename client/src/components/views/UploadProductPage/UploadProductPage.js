@@ -35,13 +35,16 @@ function UploadProductPage() {
     const handleContinentChange= (e) => {
         setContinent(e.currentTarget.value);
     }
+    const updateImages = (newImages) => {
+        setImages(newImages)
+    }
     return (
         <div style={{ maxWidth: '700px', margin: '2rem auto'}}>
             <div style={{ textAlign : 'center', marginBottom: '2rem'}}>
                 <h2>Upload Travel Product</h2>
             </div>
             <Form>
-                <FileUpload />
+                <FileUpload refreshFunction={updateImages}/>
                 <br/>
                 <br/>
                 <label>이름</label>

@@ -9,7 +9,7 @@ const multer  = require('multer')
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, '/uploads')
+        cb(null, 'uploads/')
     },
     filename: function (req, file, cb) {
         cb(null, `${Date.now()}+${file.originalname}`)
@@ -25,7 +25,7 @@ router.post('/image', (req, res) => {
         if(err) {
             return res.json({success:false, err});
         }
-        return res.json({success: true, filePath : req.file.path, fileName : req.file.name})
+        return res.json({success: true, filePath : res.req.file.path, fileName : res.req.file.name})
     })
 });
 

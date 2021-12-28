@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Dropzone from 'react-dropzone'
-import {EditOutlined, DeleteOutlined} from '@ant-design/icons';
+// import {EditOutlined, DeleteOutlined} from '@ant-design/icons';
+import {Icon} from 'antd';
 import axios from 'axios';
 
 function FileUpload(props) {
@@ -34,8 +35,7 @@ function FileUpload(props) {
         let newImages = [...Images]
         newImages.splice(currentIndex, 1)
         setImages(newImages)
-        props.refreshFunction(newImages)
-
+        // props.refreshFunction(newImages)
     }
 
 
@@ -50,13 +50,12 @@ function FileUpload(props) {
                         }}
                         {...getRootProps()}>
                         <input {...getInputProps()} />
-                        <EditOutlined type="plus" style={{ fontSize: '3rem' }} />
+                        <Icon type="plus" style={{ fontSize: '3rem' }} />
                     </div>
                 )}
             </Dropzone>
 
             <div style={{ display: 'flex', width: '350px', height: '240px', overflowX: 'scroll' }}>
-
                 {Images.map((image, index) => (
                     <div onClick={() => deleteHandler(image)} key={index}>
                         <img style={{ minWidth: '300px', width: '300px', height: '240px' }}
@@ -64,11 +63,7 @@ function FileUpload(props) {
                         />
                     </div>
                 ))}
-
-
             </div>
-
-
         </div>
     )
 }
