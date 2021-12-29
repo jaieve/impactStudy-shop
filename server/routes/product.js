@@ -8,27 +8,27 @@ const{ Product } = require("../models/Product");
 //             Product
 //=================================
 
-const storage = multer.diskStorage({
+var storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, 'uploads/')
     },
     filename: function (req, file, cb) {
-        cb(null, `${Date.now()}+${file.originalname}`)
+        cb(null, `${Date.now()}_${file.originalname}`)
     }
 })
 
-const upload = multer({ storage: storage }).single('file');
+var upload = multer({ storage: storage }).single("file")
 
 router.post('/image', (req, res) => {
-    // 가져온 이미지를 저장을 해주면 된다.
-    // server쪽에서 multer를 사용하기 때문에 client가 아닌 현재 폴더에서 npm install multer --save
+    //가져온 이미지를 저장을 해주면 된다.
     upload(req, res, err => {
-        if(err) {
-            return res.json({success:false, err});
+        if (err) {
+            return req.json({ success: false, err })
         }
-        return res.json({success: true, filePath : res.req.file.path, fileName : res.req.file.filename})
+        return res.json({ success: true, filePath: res.req.file.path, fileName: res.req.file.filename })
     })
-});
+
+})
 
 router.post('/', (req, res) => {
     // 받아온 정보들을 DB에 넣어준다.
