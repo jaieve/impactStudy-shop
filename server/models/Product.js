@@ -26,15 +26,13 @@ const productSchema = mongoose.Schema({
         maxlength: 100,
         default: 0
     },
-
-    continents: {
-        type: Number,
-        default: 1
-    },
-
     views: {
         type: Number,
         default: 0
+    },
+    continents: {
+        type: Number,
+        default: 1
     }
 }, { timestamps: true })
 
