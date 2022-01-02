@@ -25,6 +25,7 @@ function FileUpload(props) {
             .then(response => {
                 if (response.data.success) {
                     setImages([...Images, response.data.filePath])
+                    props.refreshFunction([...Images, response.data.filePath])
                 } else {
                     alert('파일을 저장하는데 실패했습니다.');
                 }

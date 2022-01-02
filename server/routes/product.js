@@ -8,7 +8,7 @@ const{ Product } = require("../models/Product");
 //             Product
 //=================================
 
-var storage = multer.diskStorage({
+const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, 'uploads/')
     },
@@ -17,17 +17,18 @@ var storage = multer.diskStorage({
     }
 })
 
-var upload = multer({ storage: storage }).single("file")
+const upload = multer({ storage: storage }).single("file")
 
 router.post('/image', (req, res) => {
-    //가져온 이미지를 저장을 해주면 된다.
+    // //가져온 이미지를 저장을 해주면 된다.
     upload(req, res, err => {
+        console.log(res.req.file);
         if (err) {
-            return req.json({ success: false, err })
+            return res.json({ success: false, err })
         }
         return res.json({ success: true, filePath: res.req.file.path, fileName: res.req.file.filename })
+        // res. 빼고 log 확인
     })
-
 })
 
 router.post('/', (req, res) => {
