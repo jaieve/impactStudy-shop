@@ -1,15 +1,21 @@
 import React, {useEffect, useState} from 'react'
 import {FaCode} from "react-icons/fa";
 import axios from "axios";
-import {Icon, Col, Card, Row, Button} from 'antd';
+import {Icon, Col, Card, Row, Button, Carousel} from 'antd';
+import ImageSlider from "../../utils/ImageSlider";
 import Meta from "antd/lib/card/Meta";
 
 function LandingPage() {
     const [Products, setProducts] = useState([])
+    const [Skip, setSkip] = useState(0)
+    const [Limit, setLimit] = useState(8)
 
     useEffect(() => {
-        let body = {}
-        axios.post("/api/product/products")
+        let body = {
+            skip : Skip,
+            limit : Limit
+        }
+        axios.post("/api/product/products", body)
             .then(response => {
                 if (response.data.success) {
                     setProducts(response.data.productInfo);
@@ -17,12 +23,17 @@ function LandingPage() {
                     alert("상품들을 가져오는데 실패했습니다.")
                 }
             })
-    })
+    }, [])
+
+    const loadMoreHandler = () => {
+
+    }
+
     const renderCards = Products.map((product, index) => {
         console.log(product);
         return <Col lg={6} md={8} xs={24} key={index}>
             <Card
-                cover={<img style={{width: '100%', maxHeight:'150px'}} src={`http://localhost:5000/${product.images[0]}`}/>}
+                cover={<ImageSlider images={product.images} />}
             >
                 <Meta
                     title={product.title}
@@ -32,6 +43,7 @@ function LandingPage() {
         </Col>
     })
 
+
     return (
         <div style={{width: '75%', margin: '3rem auto'}}>
             <div style={{textAlign: 'center'}}>
@@ -39,13 +51,13 @@ function LandingPage() {
             </div>
             { /* Filter*/}
             { /* Search */}
-            <Row gutter={16}>
+            <Row gutter={[16,16]}>
                 {renderCards}
             </Row>
 
 
             <div style={{justifyContent: 'center'}}>
-                <Button>더보기</Button>
+                <Button onClick={loadMoreHandler}>더보기</Button>
             </div>
         </div>
     )
