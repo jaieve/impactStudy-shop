@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const productSchema = mongoose.Schema({
     writer: {
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'Product'
     },
     title: {
         type: String,
