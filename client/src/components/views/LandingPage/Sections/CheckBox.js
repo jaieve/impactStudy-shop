@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import { Collapse, Checkbox} from "antd";
+import {Collapse, Checkbox} from "antd";
 
-const { Panel } = Collapse;
+const {Panel} = Collapse;
 
 function CheckBox(props) {
     const [Checked, setChecked] = useState([]);
@@ -11,35 +11,37 @@ function CheckBox(props) {
         const currentIndex = Checked.indexOf(value);
         // 전체 Checked된 State에서 현재 누른 heckbox가 이미 있자면
         const newChecked = [...Checked]
+
+        // State를 넣어준다.
         if (currentIndex === -1) {
             newChecked.push(value);
+            // 빼주고
         } else {
             newChecked.splice(currentIndex, 1)
         }
-        // 빼주고고
+        //State를 어준다.
         setChecked(newChecked)
-        //STate를 어준다.
         props.handleFilters(newChecked);
     }
 
-    const renderCheckboxLists = () => props.list && props.list.map((value, index) => (
+    const renderCheckboxLists = () => (
+        props.list && props.list.map((value, index) => (
             <React.Fragment key={index}>
                 <Checkbox
-                    onChange={()=> handleToggle(value._id)}
-                    checked={Checked.indexOf(value._id) === -1 ? false : true }>
-                    <span>{value.name}</span>
-                </Checkbox>
+                    onChange={() => handleToggle(value._id)}
+                    checked={Checked.indexOf(value._id) === -1 ? false : true}/>
+                <span>{value.name}</span>
             </React.Fragment>
-    ))
+        ))
+    )
 
     return (
         <div>
-            <Collapse defaultActiveKey={['1']}>
-                <Panel header="This is panel header 1" key="1">
+            <Collapse defaultActiveKey={['0']}>
+                <Panel header="Continents" key="1">
                     {renderCheckboxLists()}
                 </Panel>
             </Collapse>,
-
         </div>
     );
 }
