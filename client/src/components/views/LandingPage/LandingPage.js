@@ -6,6 +6,7 @@ import Meta from "antd/lib/card/Meta";
 import ImageSlider from "../../utils/ImageSlider";
 import CheckBox from "./Sections/CheckBox";
 import RadioBox from "./Sections/RadioBox";
+import SearchFeature from './Sections/SearchFeature';
 import {continents, price} from "./Datas";
 
 function LandingPage() {
@@ -18,6 +19,7 @@ function LandingPage() {
             price: []
         }
     )
+    const [SearchTerm, setSearchTerm] = useState("");
 
     useEffect(() => {
         let body = {
@@ -49,7 +51,7 @@ function LandingPage() {
             skip: skip,
             limit: Limit,
             loadMore: true,
-            filters : Filters
+            filters: Filters
         }
         getProducts(body)
         setSkip(skip);
@@ -84,7 +86,7 @@ function LandingPage() {
         let array = [];
 
         for (let key in data) { // Datas의 price의 index인 key
-            if(data[key]._id === parseInt(value._id,10)) {
+            if (data[key]._id === parseInt(value._id, 10)) {
                 array = data[key].array;
             }
         }
@@ -94,12 +96,15 @@ function LandingPage() {
         const newFilters = {...Filters} // continents의 새로운 설정값을 newFilters에 담고
         newFilters[category] = filters //
         console.log('filters', filters);
-        if(category ==='price') {
+        if (category === 'price') {
             let priceValues = handlePrice(filters);
             newFilters[category] = priceValues;
         }
         showFilterResults(newFilters);
         setFilters(newFilters);
+    }
+    const updateSearchTerm = (newSearchTerm) => {
+        setSearchTerm(newSearchTerm);
     }
     return (
         <div style={{width: '75%', margin: '3rem auto'}}>
@@ -115,9 +120,12 @@ function LandingPage() {
                     <RadioBox list={price} handleFilters={filters => handleFilters(filters, "price")}/>
                 </Col>
             </Row>
-
-
             { /* Search */}
+            <div style={{display: 'flex', justifyContent: 'flex-end', margin:'1rem auto'}}>
+                <SearchFeature
+                    refreshFunction={updateSearchTerm}/>
+            </div>
+
             <Row gutter={[16, 16]}>
                 {renderCards}
             </Row>
