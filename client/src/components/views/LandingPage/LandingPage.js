@@ -83,8 +83,8 @@ function LandingPage() {
         const data = price;
         let array = [];
 
-        for (let key in data) {
-            if(data[key]._id === parseInt(value,10)) {
+        for (let key in data) { // Datas의 price의 index인 key
+            if(data[key]._id === parseInt(value._id,10)) {
                 array = data[key].array;
             }
         }
@@ -100,8 +100,6 @@ function LandingPage() {
         }
         showFilterResults(newFilters);
         setFilters(newFilters);
-
-        // TODO 강의 5분 31초
     }
     return (
         <div style={{width: '75%', margin: '3rem auto'}}>
