@@ -33,7 +33,7 @@ function DetailProductPage(props) {
                     <ProductImage detail={Product} />
                 </Col>
                 <Col lg={12} sm={24}>
-                    <ProductInfo />
+                    <ProductInfo detail={Product} />
                 </Col>
             </Row>
             {/* Product Image */}
