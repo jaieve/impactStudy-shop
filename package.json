@@ -11,7 +11,8 @@
     "start": "node server/index.js",
     "backend": "nodemon server/index.js",
     "frontend": "npm run start --prefix client",
-    "dev": "concurrently \"npm run backend\" \"npm run start --prefix client\""
+    "dev": "concurrently \"npm run backend\" \"npm run start --prefix client\"",
+    "clear": "docusaurus clear"
   },
   "author": "John ahn",
   "license": "ISC",
@@ -32,7 +33,9 @@
     "supports-color": "^7.1.0"
   },
   "devDependencies": {
-    "concurrently": "^4.1.0",
-    "nodemon": "^1.19.1"
+    "@babel/preset-react": "^7.16.7",
+    "bcryptjs": "^2.4.3",
+    "concurrently": "^7.0.0",
+    "nodemon": "^2.0.15"
   }
 }
