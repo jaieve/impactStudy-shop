@@ -12,13 +12,9 @@ function DetailProductPage(props) {
     useEffect(() => {
         axios.get(`/api/product/products_by_id?id=${productId}&type=single`)
             .then(response => {
-                if (response.data.success) {
-                    console.log(response.data);
-                    setProduct(response.data.product[0]);
-                } else {
-                    alert("상세정보 가져오기를 실패했습니다.")
-                }
+                setProduct(response.data[0]);
             })
+            .catch(err => alert(err));
     }, [])
 
 
@@ -30,10 +26,10 @@ function DetailProductPage(props) {
             <br/>
             <Row gutter={[16, 16]}>
                 <Col lg={12} sm={24}>
-                    <ProductImage detail={Product} />
+                    <ProductImage detail={Product}/>
                 </Col>
                 <Col lg={12} sm={24}>
-                    <ProductInfo detail={Product} />
+                    <ProductInfo detail={Product}/>
                 </Col>
             </Row>
             {/* Product Image */}

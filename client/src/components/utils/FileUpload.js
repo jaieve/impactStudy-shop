@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Dropzone from 'react-dropzone'
 // import {EditOutlined, DeleteOutlined} from '@ant-design/icons';
-import Icon from '@ant-design/icons';
+import Icon from '@ant-design/icons-react';
 import axios from 'axios';
 
 function FileUpload(props) {

@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import {FaCode} from "react-icons/fa";
 import axios from "axios";
 import { Col, Card, Row, Button, Carousel} from 'antd';
-import Icon from '@ant-design/icons'
+import Icon from '@ant-design/icons-react';
 import Meta from "antd/lib/card/Meta";
 import ImageSlider from "../../utils/ImageSlider";
 import CheckBox from "./Sections/CheckBox";

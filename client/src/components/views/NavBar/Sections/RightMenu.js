@@ -1,10 +1,13 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import {Menu} from 'antd';
+import {Badge} from "antd";
+import {ShoppingCartOutline} from "@ant-design/icons";
 import axios from 'axios';
 import {USER_SERVER} from '../../../Config';
 import {withRouter} from 'react-router-dom';
 import {useSelector} from "react-redux";
+import Icon from "@ant-design/icons-react";
 
 function RightMenu(props) {
     const user = useSelector(state => state.user)
@@ -33,8 +36,20 @@ function RightMenu(props) {
     } else {
         return (
             <Menu mode={props.mode}>
+                <Menu.Item key="history">
+                    <a href="/history">History</a>
+                </Menu.Item>
                 <Menu.Item key="upload">
                     <a href="/product/upload">Upload</a>
+                </Menu.Item>
+                <Menu.Item key="cart" style={{paddingBottom: 10}}>
+                    <Badge count={5}>
+                        <a href="/user/cart" style={{marginBottom: -100,color: '#667777'}}>
+                            Cart
+                            {/*<Icon type="shopping-cart" style={{fontSize:30, marginBottom: 3}}/>*/}
+                            {/*<ShoppingCartOutline style={{fontSize:30, marginBottom: 3}} />*/}
+                        </a>
+                    </Badge>
                 </Menu.Item>
                 <Menu.Item key="logout">
                     <a onClick={logoutHandler}>Logout</a>
