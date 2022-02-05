@@ -48,5 +48,6 @@
     "@ant-design/icons": "^4.7.0",
     "@babel/preset-react": "^7.16.7",
     "http-proxy-middleware": "^1.0.3"
-  }
+  },
+  "homepage": "https://react-clone-shop.herokuapp.com/"
 }
