@@ -8,12 +8,12 @@
     "npm": "6.9.0"
   },
   "scripts": {
-    "start": "node server/index.js",
+    // "start": "node server/index.js",
+    "start" : "node index.js",
     "backend": "nodemon server/index.js",
     "frontend": "npm run start --prefix client",
     "dev": "concurrently \"npm run backend\" \"npm run start --prefix client\"",
-    "clear": "docusaurus clear",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "clear": "docusaurus clear"
   },
   "author": "John ahn",
   "license": "ISC",
@@ -38,5 +38,9 @@
     "bcryptjs": "^2.4.3",
     "concurrently": "^7.0.0",
     "nodemon": "^2.0.15"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/heroku/react-clone-shop"
   }
 }
