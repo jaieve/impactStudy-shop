@@ -5,14 +5,15 @@
   "main": "index.js",
   "engine": {
     "node": "14.16.1",
-    "npm": "6.9.0"
+    "npm": "6.14.12"
   },
   "scripts": {
-    "start" : "node index.js",
+    "start": "node index.js",
     "backend": "nodemon server/index.js",
     "frontend": "npm run start --prefix client",
     "dev": "concurrently \"npm run backend\" \"npm run start --prefix client\"",
-    "clear": "docusaurus clear"
+    "clear": "docusaurus clear",
+    "heroku-postbuild": "npm run build"
   },
   "author": "John ahn",
   "license": "ISC",
