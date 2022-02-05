@@ -1,5 +1,5 @@
 {
-  "name": "react-boiler-plate",
+  "name": "react-clone-shop",
   "version": "1.0.0",
   "description": "react boiler plate",
   "main": "index.js",
@@ -8,7 +8,6 @@
     "npm": "6.9.0"
   },
   "scripts": {
-    // "start": "node server/index.js",
     "start" : "node index.js",
     "backend": "nodemon server/index.js",
     "frontend": "npm run start --prefix client",
