@@ -24,12 +24,14 @@ export default class Paypal extends React.Component {
 
         let env = 'sandbox'; // you can set here to 'production' for production
         let currency = 'USD'; // or you can set this value from your props or state
-        let total = 1; // same as above, this is the total amount (based on currency) to be paid by using Paypal express checkout
+        let total = this.props.total; // same as above, this is the total amount (based on currency) to be paid by using Paypal express checkout
         // Document on Paypal's currency code: https://developer.paypal.com/docs/classic/api/currency_codes/
 
         const client = {
-            sandbox:    'YOUR-SANDBOX-APP-ID',
+            sandbox:    'AYed38ovTJtvz6zxKIY4xFNKcolzA8AXTM3sJQMoUq5HykLswt-t91NXvh6LtY7w7ILK_NaYHcNE3j9v',
             production: 'YOUR-PRODUCTION-APP-ID',
+            // email Id : sb-i8g0h13107630@personal.example.com
+            // pw : 내가 수정해준 비밀번호 sanha******
         }
         // In order to get production's app-ID, you will have to send your app to Paypal for approval first
         // For sandbox app-ID (after logging into your developer account, please locate the "REST API apps" section, click "Create App"):
@@ -39,7 +41,21 @@ export default class Paypal extends React.Component {
 
         // NB. You can also have many Paypal express checkout buttons on page, just pass in the correct amount and they will work!
         return (
-            <PaypalExpressBtn env={env} client={client} currency={currency} total={total} onError={onError} onSuccess={onSuccess} onCancel={onCancel} />
+            <PaypalExpressBtn
+                env={env}
+                client={client}
+                currency={currency}
+                total={total}
+                onError={onError}
+                onSuccess={onSuccess}
+                onCancel={onCancel}
+                style={{
+                    size: 'large',
+                    color: 'blue',
+                    shape: 'rect',
+                    label : 'checkout'
+                }}
+            />
         );
     }
 }
