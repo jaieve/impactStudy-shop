@@ -2,12 +2,10 @@
 import React from 'react';
 import {Menu} from 'antd';
 import {Badge} from "antd";
-import {ShoppingCartOutline} from "@ant-design/icons";
 import axios from 'axios';
 import {USER_SERVER} from '../../../Config';
 import {withRouter} from 'react-router-dom';
 import {useSelector} from "react-redux";
-import Icon from "@ant-design/icons-react";
 
 function RightMenu(props) {
     const user = useSelector(state => state.user)
